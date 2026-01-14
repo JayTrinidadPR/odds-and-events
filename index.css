@@ -1,0 +1,149 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #f4f6f8;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: #1f2933;
+}
+
+
+.container {
+  max-width: 720px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+header p {
+  margin-top: 0.5rem;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.controls {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Form */
+form {
+  display: flex;
+  gap: 0.75rem;
+}
+
+input[type="number"] {
+  flex: 1;
+  padding: 0.7rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+}
+
+input[type="number"]:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+/* Buttons */
+button {
+  padding: 0.7rem 1.2rem;
+  border-radius: 10px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Add Number */
+form button {
+  background: #2563eb;
+  color: white;
+}
+
+form button:hover {
+  background: #1e40af;
+}
+
+/* Sort Buttons Row */
+.button-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+#sort-1 {
+  background: #10b981;
+  color: white;
+}
+
+#sort-1:hover {
+  background: #059669;
+}
+
+#sort-all {
+  background: #f59e0b;
+  color: white;
+}
+
+#sort-all:hover {
+  background: #d97706;
+}
+
+.bucket {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-top: 1rem;
+  background: #fafafa;
+}
+
+.bucket h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.bucket-list {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  min-height: 2.2rem;
+  background: white;
+  border-radius: 8px;
+  border: 1px dashed #d1d5db;
+  font-size: 0.95rem;
+  color: #111827;
+}
+
+@media (max-width: 600px) {
+  form,
+  .button-row {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+}

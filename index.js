@@ -6,7 +6,43 @@ const state = {
     evens: [],
 };
 
-function NumberBucket(title, number) {
+function addNumber(value) {
+    const num = Number(value);
+
+    if (Number.isNaN(num)) return;
+
+    state.bank.push(num);
+
+    render();
+}
+
+function placeNumber(num) {
+    if (num % 2 === 0 ) {
+        state.evens.push(num);
+    } else {
+        state.odds.push(num);
+    }
+}
+
+function sortOne(){
+    if (state.bank.length === 0) return;
+
+    const first = state.bank.shift();
+
+    placeNumber(first);
+
+    render();
+}
+
+function sortAll(){
+    while (state.bank.length > 0) {
+        const num = state.bank.shift();
+        placeNumber(num);
+    }
+    render();
+}
+
+function NumberBucket(title, numbers) {
     const section = document.createElement("section")
     section.className = "bucket";
     const h2 = document.createElement("h2");
@@ -14,7 +50,7 @@ function NumberBucket(title, number) {
     const list = document.createElement("div");
     list.className = "bucket-list";
 
-    list.textContent = number.length ? number.join(", ") : "(empty)";
+    list.textContent = numbers.length ? numbers.join(", ") : "(empty)";
 
     section.append(h2, list);
     return section;
@@ -36,10 +72,14 @@ function Header() {
 }
 
 function Controls() {
+
+
+
     const wrapper = document.createElement("section");
     wrapper.className = "controls";
 
     const form = document.createElement("form");
+    form.id = "number-form";
 
     const input = document.createElement("input");
     input.type = "number";
@@ -52,6 +92,13 @@ function Controls() {
     addBtn.textContent = "Add number";
 
     form.append(input, addBtn);
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        addNumber(input.value);
+        form.reset();
+        input.focus();
+    });
 //--------
 // Sort Buttons
 //--------
@@ -71,6 +118,9 @@ btnRow.className = "button-row";
 btnRow.append(sort1Btn, sortAllBtn);
 
 wrapper.append(form, btnRow);
+
+    sort1Btn.addEventListener("click", () => { sortOne(); });
+    sortAllBtn.addEventListener("click", () => { sortAll();});
 return wrapper;
 }
 
